@@ -16,26 +16,26 @@ public class PersonaController {
 
     @GetMapping
     public List<Persona> buscarTodos() {
-        return service.buscarTodos();
+        return service.findAll();
     }
 
     @GetMapping("/{id}")
     public Persona buscarPorId(@PathVariable("id") Integer id){
-        return service.buscarPorId(id);
+        return service.findById(id);
     }
 
     @PostMapping
     public Persona guardar(@RequestBody Persona persona){
-        return service.guardar(persona);
+        return service.save(persona);
     }
 
     @PutMapping("/{id}")
     public Persona actualizar(@PathVariable("id") Integer id, @RequestBody Persona persona){
-        return service.actualizar(id, persona);
+        return service.save(persona);
     }
 
     @DeleteMapping("/{id}")
     public void eliminar(@PathVariable("id") Integer id){
-        service.eliminar(id);
+        service.delete(id);
     }
 }

@@ -1,6 +1,7 @@
-package edu.uce.model;
+package edu.uce.dto;
 
-import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -9,19 +10,18 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Entity
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
-public class Persona {
+public class PersonaDTO {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @EqualsAndHashCode.Include
     private Integer idPersona;
 
-    @Column(nullable = false, length = 70)
+    @NotNull
+    @Size(min = 3, max = 70, message = "{nombre.tamaño}")
     private String nombre;
 
-    @Column(nullable = false, length = 70, name = "lastName")
+    @NotNull
+    @Size(min = 3, max = 70, message = "{apellido.tamaño}")
     private String apellido;
 
 }
